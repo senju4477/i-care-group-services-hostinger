@@ -1,0 +1,242 @@
+{
+  "about.webp": {
+    "width": 579,
+    "height": 493,
+    "variants": [
+      {
+        "file": "about-360.webp",
+        "width": 360
+      },
+      {
+        "file": "about.webp",
+        "width": 579
+      }
+    ]
+  },
+  "accessible-path.webp": {
+    "width": 400,
+    "height": 200,
+    "variants": [
+      {
+        "file": "accessible-path-360.webp",
+        "width": 360
+      },
+      {
+        "file": "accessible-path.webp",
+        "width": 400
+      }
+    ]
+  },
+  "community-life.webp": {
+    "width": 1200,
+    "height": 800,
+    "variants": [
+      {
+        "file": "community-life-360.webp",
+        "width": 360
+      },
+      {
+        "file": "community-life-640.webp",
+        "width": 640
+      },
+      {
+        "file": "community-life.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "community-projects.webp": {
+    "width": 330,
+    "height": 290,
+    "variants": [
+      {
+        "file": "community-projects.webp",
+        "width": 330
+      }
+    ]
+  },
+  "community.webp": {
+    "width": 330,
+    "height": 290,
+    "variants": [
+      {
+        "file": "community.webp",
+        "width": 330
+      }
+    ]
+  },
+  "creative.webp": {
+    "width": 344,
+    "height": 445,
+    "variants": [
+      {
+        "file": "creative.webp",
+        "width": 344
+      }
+    ]
+  },
+  "daily-living.webp": {
+    "width": 330,
+    "height": 290,
+    "variants": [
+      {
+        "file": "daily-living.webp",
+        "width": 330
+      }
+    ]
+  },
+  "employment.webp": {
+    "width": 579,
+    "height": 493,
+    "variants": [
+      {
+        "file": "employment-360.webp",
+        "width": 360
+      },
+      {
+        "file": "employment.webp",
+        "width": 579
+      }
+    ]
+  },
+  "family-support.webp": {
+    "width": 400,
+    "height": 200,
+    "variants": [
+      {
+        "file": "family-support-360.webp",
+        "width": 360
+      },
+      {
+        "file": "family-support.webp",
+        "width": 400
+      }
+    ]
+  },
+  "getting-around.webp": {
+    "width": 1200,
+    "height": 800,
+    "variants": [
+      {
+        "file": "getting-around-360.webp",
+        "width": 360
+      },
+      {
+        "file": "getting-around-640.webp",
+        "width": 640
+      },
+      {
+        "file": "getting-around.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "hero.webp": {
+    "width": 768,
+    "height": 512,
+    "variants": [
+      {
+        "file": "hero-360.webp",
+        "width": 360
+      },
+      {
+        "file": "hero-640.webp",
+        "width": 640
+      },
+      {
+        "file": "hero.webp",
+        "width": 768
+      }
+    ]
+  },
+  "household.webp": {
+    "width": 330,
+    "height": 290,
+    "variants": [
+      {
+        "file": "household.webp",
+        "width": 330
+      }
+    ]
+  },
+  "next-steps.webp": {
+    "width": 400,
+    "height": 200,
+    "variants": [
+      {
+        "file": "next-steps-360.webp",
+        "width": 360
+      },
+      {
+        "file": "next-steps.webp",
+        "width": 400
+      }
+    ]
+  },
+  "outdoors.webp": {
+    "width": 768,
+    "height": 512,
+    "variants": [
+      {
+        "file": "outdoors-360.webp",
+        "width": 360
+      },
+      {
+        "file": "outdoors-640.webp",
+        "width": 640
+      },
+      {
+        "file": "outdoors.webp",
+        "width": 768
+      }
+    ]
+  },
+  "personal-care.webp": {
+    "width": 338,
+    "height": 290,
+    "variants": [
+      {
+        "file": "personal-care.webp",
+        "width": 338
+      }
+    ]
+  },
+  "planning.webp": {
+    "width": 330,
+    "height": 290,
+    "variants": [
+      {
+        "file": "planning.webp",
+        "width": 330
+      }
+    ]
+  },
+  "skills.webp": {
+    "width": 330,
+    "height": 290,
+    "variants": [
+      {
+        "file": "skills.webp",
+        "width": 330
+      }
+    ]
+  },
+  "support-conversation.webp": {
+    "width": 1200,
+    "height": 842,
+    "variants": [
+      {
+        "file": "support-conversation-360.webp",
+        "width": 360
+      },
+      {
+        "file": "support-conversation-640.webp",
+        "width": 640
+      },
+      {
+        "file": "support-conversation.webp",
+        "width": 1200
+      }
+    ]
+  }
+}

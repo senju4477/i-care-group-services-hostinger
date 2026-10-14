@@ -7,6 +7,7 @@ import {pages as sourcePages,header,footer,notFound,esc} from '../src/templates.
 import {redirects} from '../src/data.mjs';
 import {siteConfig} from '../src/config.mjs';
 import {pageMetadata,structuredData} from '../src/seo.mjs';
+import {renderWidgets} from '../src/widgets.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const dist=path.join(root,'dist');
 const {review,indexable,origin,delivery}=siteConfig();
@@ -26,10 +27,13 @@ const appPath=path.join(dist,'assets/app.js');
 let app=await readFile(appPath,'utf8');
 app=app.replace("'./validation.js'", "'./validation.js?v="+revisions['/assets/validation.js']+"'");
 await writeFile(appPath,app);revisions['/assets/app.js']=digest(app);
+const widgetsPath=path.join(dist,'assets/widgets.js');
+const widgets=(await readFile(widgetsPath,'utf8')).replace("'./widget-utils.js'", "'./widget-utils.js?v="+revisions['/assets/widget-utils.js']+"'");
+await writeFile(widgetsPath,widgets);revisions['/assets/widgets.js']=digest(widgets);
 const asset=ref=>ref+(revisions[ref]?'?v='+revisions[ref]:'');
 const versionAssets=html=>html.replace(/\/assets\/[a-zA-Z0-9._/-]+\.(?:png|webp|woff|css|js)(?=["\s,])/g,asset);
 function body(page){
- let html=header(page.path)+`<main id="main" tabindex="-1">${page.render()}</main>`+footer();
+ let html=header(page.path)+`<main id="main" tabindex="-1">${page.render()}</main>`+footer()+renderWidgets();
  if(!review){
   html=html.replace(/<span class="review-indicator">[\s\S]*?<\/span>/g,'').replace(/<div class="review-notice"[^>]*>[\s\S]*?<\/div>/g,'');
   html=html.replace(/(<form[^>]*data-form="([^"]+)"[^>]*>)/g,(_,tag)=>tag.replace(' novalidate',` data-delivery="${delivery}" novalidate`));
@@ -42,7 +46,7 @@ function document(page,{notFoundPage=false}={}){
  const content=body(page),allowIndex=indexable&&!notFoundPage;
  const eager=content.match(/<img\b[^>]*fetchpriority="high"[^>]*>/)?.[0];
  const preload=eager?`<link rel="preload" as="image" href="${eager.match(/\bsrc="([^"]+)"/)[1]}"${eager.includes('srcset=')?` imagesrcset="${eager.match(/srcset="([^"]+)"/)[1]}" imagesizes="${eager.match(/sizes="([^"]+)"/)[1]}"`:''} fetchpriority="high">`:'';
- return `<!doctype html><html lang="en-AU" data-review="${review}" data-delivery="${delivery}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(page.title)} | I Care Group Services</title><meta name="description" content="${esc(page.description)}"><meta name="robots" content="${allowIndex?'index,follow,max-image-preview:large':'noindex,follow'}"><meta name="theme-color" content="#1c605f"><link rel="canonical" href="${origin+page.path}"><link rel="icon" href="${asset('/assets/favicon.png')}" type="image/png"><meta property="og:site_name" content="I Care Group Services"><meta property="og:title" content="${esc(page.title)} | I Care Group Services"><meta property="og:description" content="${esc(page.description)}"><meta property="og:type" content="website"><meta property="og:url" content="${origin+page.path}"><meta property="og:image" content="${origin}/assets/hero.webp"><meta property="og:image:width" content="768"><meta property="og:image:height" content="512"><meta property="og:image:alt" content="Two people sharing a relaxed conversation outdoors"><meta property="og:locale" content="en_AU"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(page.title)} | I Care Group Services"><meta name="twitter:description" content="${esc(page.description)}"><meta name="twitter:image" content="${origin}/assets/hero.webp"><link rel="preload" href="${asset('/assets/poppins-regular.woff')}" as="font" type="font/woff" crossorigin>${preload}<link rel="stylesheet" href="${asset('/assets/style.css')}"><script type="application/ld+json">${JSON.stringify(structuredData(page,origin)).replace(/</g,'\\u003c')}</script><script src="${asset('/assets/app.js')}" type="module"></script></head><body>${content}</body></html>`;
+ return `<!doctype html><html lang="en-AU" data-review="${review}" data-delivery="${delivery}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(page.title)} | I Care Group Services</title><meta name="description" content="${esc(page.description)}"><meta name="robots" content="${allowIndex?'index,follow,max-image-preview:large':'noindex,follow'}"><meta name="theme-color" content="#1c605f"><link rel="canonical" href="${origin+page.path}"><link rel="icon" href="${asset('/assets/favicon.png')}" type="image/png"><meta property="og:site_name" content="I Care Group Services"><meta property="og:title" content="${esc(page.title)} | I Care Group Services"><meta property="og:description" content="${esc(page.description)}"><meta property="og:type" content="website"><meta property="og:url" content="${origin+page.path}"><meta property="og:image" content="${origin}/assets/hero.webp"><meta property="og:image:width" content="768"><meta property="og:image:height" content="512"><meta property="og:image:alt" content="Two people sharing a relaxed conversation outdoors"><meta property="og:locale" content="en_AU"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(page.title)} | I Care Group Services"><meta name="twitter:description" content="${esc(page.description)}"><meta name="twitter:image" content="${origin}/assets/hero.webp"><link rel="preload" href="${asset('/assets/poppins-regular.woff')}" as="font" type="font/woff" crossorigin>${preload}<link rel="stylesheet" href="${asset('/assets/style.css')}"><link rel="stylesheet" href="${asset('/assets/widgets.css')}"><script type="application/ld+json">${JSON.stringify(structuredData(page,origin)).replace(/</g,'\\u003c')}</script><script src="${asset('/assets/app.js')}" type="module"></script><script src="${asset('/assets/widgets.js')}" type="module"></script></head><body>${content}</body></html>`;
 }
 for(const page of pages){const target=path.join(dist,page.path.slice(1),'index.html');await mkdir(path.dirname(target),{recursive:true});await writeFile(target,document(page));}
 await writeFile(path.join(dist,'404.html'),document({path:'/404/',title:'Page not found',description:'Find your way back to I Care Group Services in Melbourne.',render:notFound},{notFoundPage:true}));

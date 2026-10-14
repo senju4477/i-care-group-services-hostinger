@@ -1,5 +1,5 @@
 export const business = {
-  name: 'I Care Group Services', phone: '0435 825 566', tel: '+61435825566',
+  name: 'I Care Group Services', phone: '0435 825 566', tel: '+61435825566', whatsapp: '+61435825566',
   email: 'admin@icgservices.com.au', address: '384 Keilor Road, Niddrie VIC 3042',
   abn: '61 642 653 683', hours: 'Monday–Saturday, 9 am–5 pm',
   directions: 'https://www.google.com/maps/search/?api=1&query=384+Keilor+Road+Niddrie+VIC+3042'

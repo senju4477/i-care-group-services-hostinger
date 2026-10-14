@@ -1,3 +1,23 @@
+# Contact menu refinement — 15 October 2026
+
+Expanded contact actions now show icons only. Visible phone, address and enquiry captions are removed; descriptive accessible names remain on each control. The single Contact launcher keeps its visible label. The WhatsApp action uses a clean filled vector glyph and the confirmed business destination.
+
+---
+
+# Contact and accessibility update — 15 October 2026
+
+A single Contact button at the bottom right expands to round actions for calling, Google Maps directions and a quick callback or appointment enquiry. The short form uses the existing clearly labelled email-draft delivery; it does not send automatically or confirm an appointment.
+
+A separate accessibility button opens text sizing (100–140%), high contrast, underlined links, reduced motion and reset controls. Display preferences are stored on the visitor’s device. Both panels use native modal dialogs with close buttons and Escape handling. Existing and quick forms have independent field IDs, labels and error targets.
+
+The owner subsequently confirmed the existing business number, 0435 825 566, for WhatsApp. The WhatsApp action is enabled by default and opens https://wa.me/61435825566. WHATSAPP_NUMBER can override that confirmed default, or an explicit empty string can hide it.
+
+All 23 page checks and 17 automated tests passed, including form validation, independent IDs and labels, preference storage failure recovery and WhatsApp destination validation. Syntax checks passed. Browser controls are unavailable; actual desktop/mobile interaction, assistive technology, reflow and visual checks remain pending.
+
+The rest of the audit recommendations remain suggestions. Domain/DNS, external mailbox settings and the live icgservices.com.au site are unchanged.
+
+---
+
 # Current update — 15 October 2026
 
 The current source targets Melbourne generally, anchored to 384 Keilor Road, Niddrie VIC 3042. It contains 23 complete pages. Production build and page/SEO checks pass; all 13 automated tests pass.

@@ -17,7 +17,7 @@ The server immediately listens on `process.env.PORT` (3000 when unset), bound to
 npm run verify
 ```
 
-This builds the production site, checks all page routes/assets/metadata, and runs the form, security, compression, cache and SEO tests. The current suite has 13 tests. The implementation has been exercised on Node.js 24 in the editing environment; a Node.js 22 runtime and a real Hostinger deployment still need to be verified.
+This builds the production site, checks all page routes/assets/metadata, and runs the form, security, compression, cache and SEO tests. The current suite has 17 tests. The implementation has been exercised on Node.js 24 in the editing environment; a Node.js 22 runtime and a real Hostinger deployment still need to be verified.
 
 ## Hostinger Node.js Web App
 
@@ -77,3 +77,11 @@ Compared with Version 4's source files, original photo payloads fell from 832,08
 - `dist/`: generated deployment output; regenerate it for the target environment.
 
 Versions 1–4 remain preserved in the Sites version history. This source update preserves the original logos, distinct homepage layout, quality and safeguards content, NDIS cards, and Acknowledgement of Country with the Aboriginal and Torres Strait Islander flags.
+
+## Contact and accessibility widgets
+
+Every page includes a collapsed **Contact** button at the lower right. It expands to a telephone link, Google Maps directions and a short callback/appointment enquiry form. The form uses the same configured delivery method as the main contact form; the email-app mode still requires the visitor to send the draft. It never confirms an appointment automatically.
+
+The owner confirmed **0435 825 566** for WhatsApp, so the WhatsApp action links to `https://wa.me/61435825566` by default. An optional `WHATSAPP_NUMBER` environment variable overrides that confirmed default; use international format including the country code and rebuild. Set that variable to an empty string to hide WhatsApp.
+
+The separate accessibility button provides text enlargement from 100–140%, high contrast, underlined links, reduced motion and reset. Display preferences are stored locally on the visitor’s device. Native modal dialogs provide keyboard containment and Escape-to-close behaviour. These controls complement the site’s accessibility; a browser and assistive-technology audit is still required.
